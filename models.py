@@ -16,3 +16,17 @@ class Cupcake(db.Model):
     size = db.Column(db.Text, nullable=False)
     rating = db.Column(db.Float, nullable=False)
     image = db.Column(db.Text, nullable=False, default="https://tinyurl.com/demo-cupcake")
+    
+    def __repr__(self):
+        '''Better representation of cupcake model'''
+        return f"<Cupcake: {self.id} size={self.size} flavor={self.flavor} rating={self.rating}>"
+    
+    def serialize(self):
+        '''Dict representation of Cupcake to return JSON'''
+        return {
+            'id': self.id,
+            'flavor': self.flavor,
+            'size': self.size,
+            'rating': self.rating,
+            'image': self.image
+        }
