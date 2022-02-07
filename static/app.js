@@ -1,7 +1,7 @@
 $('.delete-cupcake').click(deleteCupcake);
 
-async function deleteTodo() {
+async function deleteCupcake() {
 	const id = $(this).data('id');
-	await axios.delete(`/api/cupcake/${id}`);
+	await axios.delete(`/api/cupcakes/${id}`);
 	$(this).parent().remove();
 }
