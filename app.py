@@ -12,6 +12,14 @@ app.config['SECRET_KEY'] = "baked"
 
 connect_db(app)
 
+# Frontend routes
+@app.route('/')
+def home():
+    '''Renders homepage'''
+    cupcakes = Cupcake.query.all()
+    return render_template('index.html', cupcakes=cupcakes)
+
+# API backend
 @app.route('/api/cupcakes')
 def list_cupcakes():
     '''Get info about all cupcakes in JSON'''
