@@ -14,10 +14,12 @@ async function addCupcake() {
 	let size = $('#size').val();
 	let image = $('#image').val();
 
-	const cupcakeResponse = await axios.post(
-		'/api/cupcakes',
-		(params = { flavor: flavor, rating: rating, size: size, image: image })
-	);
+	const cupcakeResponse = await axios.post('/api/cupcakes', {
+		flavor: flavor,
+		rating: rating,
+		size: size,
+		image: image
+	});
 	let cupcake = $(generateMarkup(cupcakeResponse.data.cupcake));
 	$('#cupcakes-list').append(cupcake);
 }
@@ -29,3 +31,7 @@ function generateMarkup(cupcake) {
     data-id="${cupcake.id}">X</button>
   </li>`;
 }
+
+// if (!$('#img-id').src) {
+// 	$('#img-id').src = 'https://tinyurl.com/demo-cupcake';
+// }
